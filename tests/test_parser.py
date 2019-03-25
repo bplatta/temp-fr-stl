@@ -3,19 +3,19 @@ import unittest
 
 class TestSTLParser(unittest.TestCase):
     def test_parse_stl_file_success(self):
-        pass
+        self.fail()
 
     def test_parse_stl_file_invalid_solid(self):
-        pass
+        self.fail()
 
     def test_parse_stl_file_invalid_facet_normal(self):
-        pass
+        self.fail()
 
     def test_parse_stl_file_invalid_facet_vertices_types(self):
-        pass
+        self.fail()
 
     def test_parse_stl_file_invalid_facet_vertices_count(self):
-        pass
+        self.fail()
 
     def test_parse_stl_file_does_not_exist(self):
-        pass
+        self.fail()
