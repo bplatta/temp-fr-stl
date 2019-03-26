@@ -10,3 +10,9 @@ properly on windows for now due a rogue windows char.
 
 ## Run Tests
 `python -m unittest`
+
+
+## Design thinking
+
+
+## Performance improvements

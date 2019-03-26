@@ -140,9 +140,10 @@ def parse_solid(stl_io_stream) -> STLSolid:
         STLAnalysisException -- [description]
     """
     stream = FileStream(stream=stl_io_stream)
-    line_parts = stream.next().split(' ')
+    first_line = stream.next()
+    line_parts = first_line.split(' ')
     if len(line_parts) < LineConstants.SOLID_DEF_PARTS:
-        raise STLAnalysisException('Bad solid definition: "{}"'.format(line_parts))
+        raise STLAnalysisException('Bad solid definition: "{}"'.format(first_line))
 
     solid_name = line_parts[1]
     facets = parse_facets(stream)
@@ -159,7 +160,8 @@ def read_stl(full_path: str) -> Iterator[str]:
 
 def parse_stl_file(full_path: str) -> STLSolid:
     try:
-        return parse_solid(read_stl(full_path))
+        with read_stl(full_path) as stl_stream:
+            return parse_solid(stl_stream)
     except FileNotFoundError:
         raise STLAnalysisException('STL file not found: {}'.format(full_path))
     except TypeError as e:
